@@ -3,12 +3,14 @@
 namespace Shapes
 {
     public class Triangle : Shape
-    {    
+    {
         public double SideA { get; private set; }
 
         public double SideB { get; private set; }
 
         public double SideC { get; private set; }
+
+        public bool IsRightAngle { get; private init; }
 
         public Triangle(double sideA, double sideB, double sideC)
         {
@@ -20,7 +22,14 @@ namespace Shapes
             SideC = sideC;
 
             CheckSidesRule();
+            IsRightAngle = CheckIsRightAngle();
+                
         }
+
+        private bool CheckIsRightAngle()
+            => (SideA * SideA + SideB * SideB).Equals4DigitPrecision(SideC * SideC) ||
+               (SideA * SideA + SideC * SideC).Equals4DigitPrecision(SideB * SideB) ||
+               (SideC * SideC + SideB * SideB).Equals4DigitPrecision(SideA * SideA);
 
         private void CheckSidesRule()
         {

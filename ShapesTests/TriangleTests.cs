@@ -1,4 +1,5 @@
 ﻿using Shapes;
+using System.ComponentModel;
 
 namespace ShapesTests
 {
@@ -50,6 +51,20 @@ namespace ShapesTests
             square = Math.Round(square, 6);
 
             Assert.Equal(expected, square);
+        }
+
+        [Theory]
+        [InlineData(3, 4, 5, true)]
+        [InlineData(5, 12, 13, true)]
+        [InlineData(19, 180, 181, true)]
+        [InlineData(55.3333, 379.4984, 383.5112136057, true)]
+        public void IsRightAnglesTest(double sideA, double sideB, double sideC, bool expected)
+        {
+            var triangle = new Triangle(sideA, sideB, sideC);
+
+            bool isRightAngle = triangle.IsRightAngle;
+
+            Assert.Equal(expected, isRightAngle);
         }
     }
 }

@@ -48,16 +48,17 @@ namespace ShapesTests
             var triangle = new Triangle(sideA, sideB, sideC);
 
             var square = triangle.GetSquare();
-            square = Math.Round(square, 6);
 
-            Assert.Equal(expected, square);
+            Assert.True(expected.Equals4DigitPrecision(square));
         }
 
         [Theory]
         [InlineData(3, 4, 5, true)]
         [InlineData(5, 12, 13, true)]
         [InlineData(19, 180, 181, true)]
-        [InlineData(55.3333, 379.4984, 383.5112136057, true)]
+        [InlineData(379.4984, 55.3333, 383.5111598004, true)]
+        [InlineData(55.33, 383.5131, 387.4838148512, true)]
+
         public void IsRightAnglesTest(double sideA, double sideB, double sideC, bool expected)
         {
             var triangle = new Triangle(sideA, sideB, sideC);

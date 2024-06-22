@@ -1,7 +1,8 @@
-﻿using Shapes;
+﻿using Shapes.Extensions;
+using Shapes.Shapes;
 using System.ComponentModel;
 
-namespace ShapesTests
+namespace ShapesTests.Tests
 {
     public class TriangleTests
     {
@@ -32,7 +33,7 @@ namespace ShapesTests
             Assert.Throws<Exception>(() =>
             {
                 var triangle = new Triangle(sideA, sideB, sideC);
-            });               
+            });
         }
 
         [Theory]

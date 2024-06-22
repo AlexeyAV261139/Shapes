@@ -1,6 +1,6 @@
-using Shapes;
+using Shapes.Shapes;
 
-namespace ShapesTests
+namespace ShapesTests.Tests
 {
     public class CircleTest
     {

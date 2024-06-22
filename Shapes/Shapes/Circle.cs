@@ -1,6 +1,6 @@
 ﻿using Shapes.Abstracts;
 
-namespace Shapes
+namespace Shapes.Shapes
 {
     public class Circle : Shape
     {
@@ -14,6 +14,6 @@ namespace Shapes
         public double Radius { get; private set; }
 
         public override double GetSquare()
-            => Math.PI * Radius * Radius;        
+            => Math.PI * Radius * Radius;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Shapes.Abstracts;
+using Shapes.Extensions;
 
-namespace Shapes
+namespace Shapes.Shapes
 {
     public class Triangle : Shape
     {
@@ -10,7 +11,10 @@ namespace Shapes
 
         public double SideC { get; private set; }
 
-        public bool IsRightAngle { get; private init; }
+        public bool IsRightAngle
+            => (SideA * SideA + SideB * SideB).Equals4DigitPrecision(SideC * SideC) ||
+               (SideA * SideA + SideC * SideC).Equals4DigitPrecision(SideB * SideB) ||
+               (SideC * SideC + SideB * SideB).Equals4DigitPrecision(SideA * SideA);
 
         public Triangle(double sideA, double sideB, double sideC)
         {
@@ -22,14 +26,7 @@ namespace Shapes
             SideC = sideC;
 
             CheckSidesRule();
-            IsRightAngle = CheckIsRightAngle();
-                
         }
-
-        private bool CheckIsRightAngle()
-            => (SideA * SideA + SideB * SideB).Equals4DigitPrecision(SideC * SideC) ||
-               (SideA * SideA + SideC * SideC).Equals4DigitPrecision(SideB * SideB) ||
-               (SideC * SideC + SideB * SideB).Equals4DigitPrecision(SideA * SideA);
 
         private void CheckSidesRule()
         {
